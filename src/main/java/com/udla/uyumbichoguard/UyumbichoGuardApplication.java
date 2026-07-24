@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 /**
  * Clase principal de arranque de UyumbichoGuard.
  *
- * @EnableJpaAuditing activa el llenado automático de createdAt/updatedAt
- * definido en AuditoriaBase (Parte 1). Se completará en la Parte 7 con
- * la configuración de scheduling (para expirar bloqueos, etc.) si aplica.
+ * @EnableJpaAuditing activa createdAt/updatedAt automáticos
+ * (AuditoriaBase, Parte 1). @EnableAsync para el envío de WhatsApp
+ * vive en AsyncConfig (Parte 5B), no aquí, para mantener cada
+ * @Configuration enfocada en una sola responsabilidad.
  */
 @SpringBootApplication
 @EnableJpaAuditing

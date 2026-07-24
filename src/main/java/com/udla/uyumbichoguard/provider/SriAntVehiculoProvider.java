@@ -6,7 +6,7 @@ import com.udla.uyumbichoguard.provider.exception.VehiculoProviderException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Profile;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -31,7 +31,7 @@ import java.util.Optional;
  * depende de un trámite institucional con el SRI/ANT.
  */
 @Component
-@Profile("sri")
+@ConditionalOnProperty(prefix = "app.vehiculo-provider", name = "tipo", havingValue = "sri")
 @RequiredArgsConstructor
 public class SriAntVehiculoProvider implements VehiculoProvider {
 

@@ -1,6 +1,8 @@
 package com.udla.uyumbichoguard.provider.config;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -16,7 +18,7 @@ import java.time.Duration;
  * un bean HTTP innecesario cuando se usa el Mock.
  */
 @Configuration
-@Profile("sri")
+@ConditionalOnProperty(prefix = "app.vehiculo-provider", name = "tipo", havingValue = "sri")
 @RequiredArgsConstructor
 public class RestClientConfig {
 

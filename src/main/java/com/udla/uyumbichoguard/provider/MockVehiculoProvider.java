@@ -3,6 +3,7 @@ package com.udla.uyumbichoguard.provider;
 import com.udla.uyumbichoguard.provider.dto.InfoVehiculoExterna;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +26,12 @@ import java.util.Optional;
  * de la defensa de tesis sean reproducibles y no aleatorias.
  */
 @Component
-@Profile({"mock", "default"})
+@ConditionalOnProperty(
+        prefix = "app.vehiculo-provider",
+        name = "tipo",
+        havingValue = "mock",
+        matchIfMissing = true // Si no se define la propiedad, Mock es el default seguro.
+)
 public class MockVehiculoProvider implements VehiculoProvider {
 
     private static final Logger log = LoggerFactory.getLogger(MockVehiculoProvider.class);
